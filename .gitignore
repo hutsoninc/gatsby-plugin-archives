@@ -16,3 +16,7 @@ test
 temp
 temp-*
 *.tmp
+
+gatsby-node.js
+default-options.js
+!src/*.js
