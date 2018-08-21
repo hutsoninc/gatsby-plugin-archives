@@ -1,0 +1,15 @@
+{
+  "name": "gatsby-plugin-archives",
+  "version": "1.0.0",
+  "description": "Gatsby plugin for ignoring files and directories on build.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Austin Gordon <agordon@hutsoninc.com>",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ]
+}
