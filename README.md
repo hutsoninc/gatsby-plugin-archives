@@ -4,7 +4,7 @@ Gatsby plugin for ignoring files and directories on build.
 
 ## Installing
 
-`npm install --save gatsby-plugin-canonical-urls`
+`npm install --save gatsby-plugin-archives`
 
 ## How to use
 
