@@ -6,7 +6,7 @@ exports.onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
     const options = { ...pluginOptions };
     delete options.plugins;
 
-    let { exclude, caseSensitive, ...rest } = { ...options, ...defaultOptions };
+    let { exclude, caseSensitive, ...rest } = { ...defaultOptions, ...options };
 
     let path = page.path;
     
