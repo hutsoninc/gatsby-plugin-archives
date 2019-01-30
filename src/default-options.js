@@ -1,5 +1,5 @@
 const defaultOptions = {
-    exclude: ['archive/'],
+    exclude: ['*/archive/*'],
     caseSensitive: false
 };
 

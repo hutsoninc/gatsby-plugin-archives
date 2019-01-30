@@ -1,6 +1,8 @@
 # gatsby-plugin-archives
 
-Gatsby plugin for ignoring files and directories on build.
+[![Current npm package version](https://img.shields.io/npm/v/gatsby-plugin-archives.svg)](https://www.npmjs.com/package/gatsby-plugin-archives) 
+
+Gatsby plugin for ignoring files and directories on build. Uses [matcher](https://github.com/sindresorhus/matcher) wildcard matching.
 
 ## Installing
 
@@ -14,8 +16,8 @@ plugins: [
   {
     resolve: `gatsby-plugin-archives`,
     options: {
-        // Files and directories to exclude. Default: ["archive/"]
-        exclude: ["archive/"],
+        // Files and directories to exclude. Default: ["*/archive/*"]
+        exclude: ["*/test-pages/*"],
         // Make excludes case sensitive. Default: false
         caseSensitive: false
     },
@@ -23,10 +25,6 @@ plugins: [
 ]
 ```
 
-## Authors
-
-* **Austin Gordon** - *Development* - [GitHub](https://github.com/AustinLeeGordon)
-
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+MIT © [Hutson Inc](https://www.hutsoninc.com)

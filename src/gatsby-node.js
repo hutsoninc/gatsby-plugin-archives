@@ -1,24 +1,26 @@
+const matcher = require('matcher');
 const defaultOptions = require('./default-options');
 
-exports.onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
-    const { deletePage } = boundActionCreators;
-    
-    const options = { ...pluginOptions };
-    delete options.plugins;
+exports.onCreatePage = ({ page, actions }, options) => {
+    const { deletePage } = actions;
 
-    let { exclude, caseSensitive, ...rest } = { ...defaultOptions, ...options };
+    options = Object.assign({}, defaultOptions, options);
 
-    let path = page.path;
-    
-    if(!caseSensitive) {
-        path = path.toLowerCase();
-        exclude = exclude.map(e => e.toLowerCase());
+    if (options.plugins) {
+        delete options.plugins;
     }
 
+    let { exclude, caseSensitive } = options;
+
     return new Promise(resolve => {
-        for(let i = 0; i < exclude.length; i++) {
-            if(path.indexOf(exclude[i]) >= 0) {
+        for (let i = 0; i < exclude.length; i++) {
+            let match = matcher.isMatch(page.path, exclude[i], {
+                caseSensitive,
+            });
+
+            if (match) {
                 deletePage(page);
+                break;
             }
         }
         resolve();
