@@ -12,6 +12,10 @@ exports.onCreatePage = ({ page, actions }, options) => {
 
     let { exclude, caseSensitive } = options;
 
+    if (typeof exclude === 'string') {
+        exclude = [exclude];
+    }
+
     return new Promise(resolve => {
         for (let i = 0; i < exclude.length; i++) {
             let match = matcher.isMatch(page.path, exclude[i], {
