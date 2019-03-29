@@ -5,7 +5,7 @@ exports.onCreatePage = ({ page, actions }, options) => {
     options = Object.assign({}, defaultOptions, options);
     
     const { deletePage } = actions;
-    const { exclude, caseSensitive } = options;
+    let { exclude, caseSensitive } = options;
 
     if(process.env.NODE_ENV !== 'production' && options.productionOnly) {
         return;
