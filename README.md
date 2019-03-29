@@ -19,7 +19,9 @@ plugins: [
         // Files and directories to exclude. Default: ["*/archive/*"]
         exclude: ["*/test-pages/*"],
         // Make excludes case sensitive. Default: false
-        caseSensitive: false
+        caseSensitive: false,
+        // Only archive pages in production. Default: false
+        productionOnly: true,
     },
   },
 ]

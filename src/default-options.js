@@ -1,6 +1,7 @@
 const defaultOptions = {
     exclude: ['*/archive/*'],
-    caseSensitive: false
+    caseSensitive: false,
+    productionOnly: false,
 };
 
 module.exports = defaultOptions;

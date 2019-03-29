@@ -2,15 +2,14 @@ const matcher = require('matcher');
 const defaultOptions = require('./default-options');
 
 exports.onCreatePage = ({ page, actions }, options) => {
-    const { deletePage } = actions;
-
     options = Object.assign({}, defaultOptions, options);
+    
+    const { deletePage } = actions;
+    const { exclude, caseSensitive } = options;
 
-    if (options.plugins) {
-        delete options.plugins;
+    if(process.env.NODE_ENV !== 'production' && options.productionOnly) {
+        return;
     }
-
-    let { exclude, caseSensitive } = options;
 
     if (typeof exclude === 'string') {
         exclude = [exclude];
