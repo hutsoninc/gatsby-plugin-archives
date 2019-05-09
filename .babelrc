@@ -1,7 +1,13 @@
 {
     "presets": [
-        "es2015",
-        "stage-3",
-        "react"
+        [
+            "@babel/env",
+            {
+                "targets": {
+                    "browsers": ["last 4 versions", "safari >= 7", "ie >= 9"]
+                }
+            }
+        ],
+        "@babel/react"
     ]
 }
