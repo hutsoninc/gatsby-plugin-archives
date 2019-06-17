@@ -1,13 +1,10 @@
 {
     "presets": [
         [
-            "@babel/env",
+            "babel-preset-gatsby-package",
             {
-                "targets": {
-                    "browsers": ["last 4 versions", "safari >= 7", "ie >= 9"]
-                }
+                "browser": true
             }
-        ],
-        "@babel/react"
+        ]
     ]
 }

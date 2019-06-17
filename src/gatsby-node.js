@@ -1,31 +1,35 @@
-const matcher = require('matcher');
-const defaultOptions = require('./default-options');
+import defaultOptions, { validateOptions } from './default-options';
 
-exports.onCreatePage = ({ page, actions }, options) => {
-    options = Object.assign({}, defaultOptions, options);
-    
-    const { deletePage } = actions;
-    let { exclude, caseSensitive } = options;
+export const onPreBootstrap = validateOptions;
 
-    if(process.env.NODE_ENV !== 'production' && options.productionOnly) {
+export function onCreatePage({ actions: { deletePage }, page, reporter }, pluginOptions) {
+    const options = Object.assign({}, defaultOptions, pluginOptions);
+
+    if (process.env.NODE_ENV !== 'production' && options.productionOnly) {
         return;
     }
 
-    if (typeof exclude === 'string') {
-        exclude = [exclude];
+    const { exclude, verbose } = options;
+
+    const excludeMatchers = [];
+
+    if (Array.isArray(exclude)) {
+        excludeMatchers.push(...exclude);
+    } else {
+        excludeMatchers.push(exclude);
     }
 
-    return new Promise(resolve => {
-        for (let i = 0; i < exclude.length; i++) {
-            let match = matcher.isMatch(page.path, exclude[i], {
-                caseSensitive,
-            });
+    for (let i = 0; i < excludeMatchers.length; i++) {
+        const match = excludeMatchers[i].test(page.path);
 
-            if (match) {
-                deletePage(page);
-                break;
+        if (match) {
+            deletePage(page);
+
+            if (verbose) {
+                reporter.info(`Archived page: ${page.path}`);
             }
+
+            break;
         }
-        resolve();
-    });
+    }
 };
