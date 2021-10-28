@@ -1,10 +1,10 @@
 # gatsby-plugin-archives
 
-[![Build Status](https://travis-ci.com/hutsoninc/gatsby-plugin-archives.svg?branch=master)](https://travis-ci.com/hutsoninc/gatsby-plugin-archives) [![Current npm package version](https://img.shields.io/npm/v/gatsby-plugin-archives.svg)](https://www.npmjs.com/package/gatsby-plugin-archives) 
+[![Current npm package version](https://img.shields.io/npm/v/gatsby-plugin-archives.svg)](https://www.npmjs.com/package/gatsby-plugin-archives) 
 
-Gatsby plugin for ignoring files and directories on build.
+Gatsby plugin for ignoring pages on build.
 
-## Installing
+## Installation
 
 `npm install --save gatsby-plugin-archives`
 
@@ -12,24 +12,21 @@ Gatsby plugin for ignoring files and directories on build.
 
 ```js
 // In your gatsby-config.js
-plugins: [
-  {
-    resolve: `gatsby-plugin-archives`,
-    options: {
-        // Files and directories to exclude
-        // Default: /archive/i
-        exclude: [/(archive|templates)/i, /example-page.js/],
-        
+module.exports = {
+  plugins: [
+    {
+      resolve: 'gatsby-plugin-archives',
+      options: {
+        // Match files and directories to exclude
+        exclude: [/archive/i],
         // Only archive pages in production
-        // Default: false
-        productionOnly: true,
-
+        productionOnly: false,
         // Log when pages are archived
-        // Default: false
-        verbose: true,
+        verbose: false,
+      },
     },
-  },
-]
+  ]
+}
 ```
 
 ## License
