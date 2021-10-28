@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-archives",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Gatsby plugin for ignoring files and directories on build.",
   "main": "index.js",
   "scripts": {
