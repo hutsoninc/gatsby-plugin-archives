@@ -1,7 +1,7 @@
-import Joi from '@hapi/joi'
+import Joi from 'joi'
 
 const optionsSchema = Joi.object().keys({
-  exclude: [Joi.object().type(RegExp), Joi.array().items(Joi.object().type(RegExp))],
+  exclude: [Joi.object().regex(), Joi.array().items(Joi.object().regex())],
   productionOnly: Joi.boolean(),
   verbose: Joi.boolean(),
 })
